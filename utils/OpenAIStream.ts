@@ -33,7 +33,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 
   const requestHeaders: Record<string, string> = {
     'Content-Type': 'application/json',
-    Authorization: `Bearer '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'`,
+    Authorization: `Bearer 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`,
   }
 
   // if (process.env.OPENAI_API_ORG) {
