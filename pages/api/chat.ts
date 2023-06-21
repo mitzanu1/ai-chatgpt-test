@@ -16,7 +16,7 @@ const handler = async (req: Request): Promise<Response> => {
   const messages: ChatGPTMessage[] = [
     {
       role: 'system',
-      content: `Jesus assistance`,
+      content: `Chat with Jesus`,
     },
   ]
   messages.push(...body?.messages)
@@ -24,8 +24,10 @@ const handler = async (req: Request): Promise<Response> => {
   const payload: OpenAIStreamPayload = {
     model: 'gpt-3.5-turbo',
     messages: messages,
-    temperature: 0.7,
-    max_tokens: 100,
+    temperature: process.env.AI_TEMP ? parseFloat(process.env.AI_TEMP) : 0.7,
+    max_tokens: process.env.AI_MAX_TOKENS
+      ? parseInt(process.env.AI_MAX_TOKENS)
+      : 100,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
